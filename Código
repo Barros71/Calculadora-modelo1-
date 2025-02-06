@@ -1,0 +1,51 @@
+"use client";
+
+
+import { useState } from "react";
+
+
+export default function Home() {
+  const [Numer_A, setNumer_A] = useState(0);
+  const [Numer_B, setNumer_B] = useState(0);
+  const [resultado, setResultado] = useState(0);
+
+    function Calcular() {
+    const numA = Numer_A || 0;
+    const numB = Numer_B || 0;
+
+    console.log(numA, numB);
+    setResultado(numA + numB);
+    console.log("Lado cliente");
+
+  }
+
+  return (
+    <div className="flex flex-col items-center justify-center h-screen space-y-4 noto">
+      <span className="text-3x1 text-white">Simples Calculadora</span>
+      <input
+        type="number"
+        className="rounded p-4 !text-4x1 text-orange-400 text-center bg-white w-50"
+        value={Numer_A}
+        onChange={(e) => setNumer_A(parseFloat(e.target.value))}
+      />
+      <input
+        type="number"
+        className="rounded p-4 !text-4x1 text-orange-400 text-center bg-white"
+        value={Numer_B}
+        onChange={(e) => setNumer_B(parseFloat(e.target.value))}
+      />
+      <input
+        type="number"
+        className="rounded p-4 !text-4x1 text-orange-400 text-center bg-white"
+        value={resultado}
+        readOnly
+      />
+
+      <button
+        className="border w-40 p-2 text-x1 rounded hover:scale-110 hover:opacity-45 hover:cursor-pointer"
+        onClick={Calcular}
+      >
+       Somar  
+      </button>
+    </div>     
+  )
